@@ -1,0 +1,14 @@
+.content{
+    width: 600px;
+}
+
+.order{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+}
+
+.cost{
+    display: flex;
+    align-items: center;
+}
