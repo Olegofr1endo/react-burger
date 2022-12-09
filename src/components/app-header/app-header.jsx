@@ -32,9 +32,6 @@ function AppHeader({ isActive, setIsActive }) {
             iconType="ListIcon"
           />
         </div>
-        <div className={styles.logo}>
-          <Logo />
-        </div>
         <HeaderButton
           onClick={changeActiveButton("profile")}
           isActive={isActive.profile}
@@ -42,6 +39,9 @@ function AppHeader({ isActive, setIsActive }) {
           indents="pl-5 pr-5"
           iconType="ProfileIcon"
         />
+        <div className={styles.logo}>
+          <Logo />
+        </div>
       </nav>
     </header>
   );

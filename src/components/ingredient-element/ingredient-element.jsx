@@ -2,20 +2,27 @@ import {
   CurrencyIcon,
   Counter,
 } from "@ya.praktikum/react-developer-burger-ui-components";
-import React, { useState } from "react";
+import React, { useMemo } from "react";
 import styles from "./ingredient-element.module.css";
 
 function IngredientElement({ ingredient, statesData }) {
-  const { burgerCreation, setBurgerCreation, burgerBun, setBurgerBun } = {
-    ...statesData,
-  };
+  const { burgerCreation, setBurgerCreation, burgerBun, setBurgerBun } =
+    useMemo(() => {
+      return {
+        ...statesData,
+      };
+    }, [statesData.burgerCreation, statesData.burgerBun]);
 
-  let counter = burgerCreation.reduce((sum, item) => {
-    if (item._id === ingredient._id) {
-      return (sum += 1);
-    }
-    return sum;
-  }, 0);
+  let counter = useMemo(
+    () =>
+      burgerCreation.reduce((sum, item) => {
+        if (item._id === ingredient._id) {
+          return (sum += 1);
+        }
+        return sum;
+      }, 0),
+    [burgerCreation]
+  );
 
   if (ingredient._id === burgerBun._id) {
     counter++;

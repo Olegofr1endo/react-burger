@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useMemo } from "react";
 import styles from "./header-button.module.css";
 import {
   ListIcon,
@@ -9,11 +9,13 @@ import {
 } from "@ya.praktikum/react-developer-burger-ui-components";
 
 function HeaderButton({ iconType, text, indents, isActive, onClick }) {
-  const icons = {
-    ListIcon: ListIcon,
-    BurgerIcon: BurgerIcon,
-    ProfileIcon: ProfileIcon,
-  };
+  const icons = useMemo(() => {
+    return {
+      ListIcon: ListIcon,
+      BurgerIcon: BurgerIcon,
+      ProfileIcon: ProfileIcon,
+    };
+  }, []);
 
   const className = isActive
     ? indents + " " + styles.button + " " + styles.button_active

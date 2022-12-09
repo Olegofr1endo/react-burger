@@ -1,17 +1,29 @@
-import React from "react";
+import React, { useMemo } from "react";
 import styles from "./burger-ingredients-content.module.css";
 import SortedByType from "../sorted-by-type/sorted-by-type";
 
 function BurgerIngredientsContent({ data, statesData }) {
-  const bunsData = data.filter((item) => {
-    return item.type === "bun";
-  });
-  const mainsData = data.filter((item) => {
-    return item.type === "main";
-  });
-  const saucesData = data.filter((item) => {
-    return item.type === "sauce";
-  });
+  const bunsData = useMemo(
+    () =>
+      data.filter((item) => {
+        return item.type === "bun";
+      }),
+    [data]
+  );
+  const mainsData = useMemo(
+    () =>
+      data.filter((item) => {
+        return item.type === "main";
+      }),
+    [data]
+  );
+  const saucesData = useMemo(
+    () =>
+      data.filter((item) => {
+        return item.type === "sauce";
+      }),
+    [data]
+  );
 
   function scrollHandler(e) {
     console.log("кручу");

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useMemo } from "react";
 import AppHeader from "../app-header/app-header";
 import BurgerIngridients from "../burger-ingredients/burger-ingridients";
 import { data } from "../../utils/data";
@@ -14,12 +14,14 @@ function App() {
     profile: false,
   });
 
-  const statesData = {
-    burgerCreation,
-    setBurgerCreation,
-    burgerBun,
-    setBurgerBun,
-  };
+  const statesData = useMemo(() => {
+    return {
+      burgerCreation,
+      setBurgerCreation,
+      burgerBun,
+      setBurgerBun,
+    };
+  }, [burgerCreation, burgerBun]);
 
   return (
     <div className="App">
