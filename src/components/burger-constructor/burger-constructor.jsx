@@ -17,17 +17,30 @@ function BurgerConstructor({ statesData }) {
       : statesData.burgerBun.price * 2;
   }, [statesData.burgerCreation, statesData.burgerBun]);
 
+  const buttonState = useMemo(() => {
+    if (statesData.burgerBun.type) {
+      return false;
+    } else {
+      return true;
+    }
+  }, [statesData.burgerBun.type]);
+
   return (
     <section className={"pt-25 " + styles.content}>
       <ScrollableConstructContainer statesData={statesData} />
       <div className={"pt-10 " + styles.order}>
         <div className={"pr-10 " + styles.cost}>
-          <span className="text text_type_digits-medium pr-2">{sum}</span>
+          <span className="text text_type_digits-medium pr-3">{sum}</span>
           <div className={styles.icon}>
             <CurrencyIcon type="primary" />
           </div>
         </div>
-        <Button htmlType="button" type="primary" size="large">
+        <Button
+          disabled={buttonState}
+          htmlType="button"
+          type="primary"
+          size="large"
+        >
           Оформить заказ
         </Button>
       </div>
