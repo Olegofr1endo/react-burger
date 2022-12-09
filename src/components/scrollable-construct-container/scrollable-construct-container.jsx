@@ -3,6 +3,7 @@ import styles from "./scrollable-construct-container.module.css";
 import ConstructorElementWrapper from "../constructor-element-wrapper/constructor-element-wrapper";
 import PropTypes from "prop-types";
 import { v4 as uuid } from "uuid";
+import { statesDataProps } from "../../utils/propTypes";
 
 function ScrollableConstructContainer({ statesData }) {
   const { burgerCreation, setBurgerCreation, burgerBun } = { ...statesData };
@@ -53,12 +54,7 @@ function ScrollableConstructContainer({ statesData }) {
 }
 
 ScrollableConstructContainer.propTypes = {
-  statesData: PropTypes.shape({
-    burgerCreation: PropTypes.array.isRequired,
-    setBurgerCreation: PropTypes.func.isRequired,
-    burgerBun: PropTypes.object.isRequired,
-    setBurgerBun: PropTypes.func.isRequired,
-  }).isRequired,
+  statesData: statesDataProps,
 };
 
 export default ScrollableConstructContainer;

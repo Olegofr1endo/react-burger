@@ -2,6 +2,7 @@ import React, { useMemo } from "react";
 import styles from "./burger-ingredients-content.module.css";
 import SortedByType from "../sorted-by-type/sorted-by-type";
 import PropTypes from "prop-types";
+import { statesDataProps, dataProps } from "../../utils/propTypes";
 
 function BurgerIngredientsContent({ data, statesData }) {
   const [bun, main, sauce] = ["bun", "main", "sauce"];
@@ -47,28 +48,8 @@ function BurgerIngredientsContent({ data, statesData }) {
 }
 
 BurgerIngredientsContent.propTypes = {
-  statesData: PropTypes.shape({
-    burgerCreation: PropTypes.array.isRequired,
-    setBurgerCreation: PropTypes.func.isRequired,
-    burgerBun: PropTypes.object.isRequired,
-    setBurgerBun: PropTypes.func.isRequired,
-  }).isRequired,
-  data: PropTypes.arrayOf(
-    PropTypes.shape({
-      _id: PropTypes.string.isRequired,
-      name: PropTypes.string.isRequired,
-      type: PropTypes.string.isRequired,
-      proteins: PropTypes.number.isRequired,
-      fat: PropTypes.number.isRequired,
-      carbohydrates: PropTypes.number.isRequired,
-      calories: PropTypes.number.isRequired,
-      price: PropTypes.number.isRequired,
-      image: PropTypes.string.isRequired,
-      image_mobile: PropTypes.string.isRequired,
-      image_large: PropTypes.string.isRequired,
-      __v: PropTypes.number.isRequired,
-    }).isRequired
-  ).isRequired,
+  statesData: statesDataProps,
+  data: dataProps,
 };
 
 export default BurgerIngredientsContent;

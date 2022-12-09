@@ -5,6 +5,7 @@ import {
   Button,
   CurrencyIcon,
 } from "@ya.praktikum/react-developer-burger-ui-components";
+import { statesDataProps } from "../../utils/propTypes";
 import ScrollableConstructContainer from "../scrollable-construct-container/scrollable-construct-container";
 
 function BurgerConstructor({ statesData }) {
@@ -41,12 +42,7 @@ function BurgerConstructor({ statesData }) {
 }
 
 BurgerConstructor.propTypes = {
-  statesData: PropTypes.shape({
-    burgerCreation: PropTypes.array.isRequired,
-    setBurgerCreation: PropTypes.func.isRequired,
-    burgerBun: PropTypes.object.isRequired,
-    setBurgerBun: PropTypes.func.isRequired,
-  }).isRequired,
+  statesData: statesDataProps,
 };
 
 export default BurgerConstructor;
