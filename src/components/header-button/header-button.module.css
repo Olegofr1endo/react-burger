@@ -2,7 +2,7 @@
     display: flex;
     align-items: center;
     min-height: 56px;
-    cursor: pointer;
+    text-decoration: none;
     color: #8585AD;
     transition: color .3s linear;
 }

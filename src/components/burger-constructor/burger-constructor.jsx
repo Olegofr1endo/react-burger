@@ -17,26 +17,18 @@ function BurgerConstructor({ statesData }) {
       : statesData.burgerBun.price * 2;
   }, [statesData.burgerCreation, statesData.burgerBun]);
 
-  const buttonState = useMemo(() => {
-    if (statesData.burgerBun.type) {
-      return false;
-    } else {
-      return true;
-    }
-  }, [statesData.burgerBun.type]);
-
   return (
-    <section className={"pt-25 " + styles.content}>
+    <section className={`pt-25 ${styles.content}`}>
       <ScrollableConstructContainer statesData={statesData} />
-      <div className={"pt-10 " + styles.order}>
-        <div className={"pr-10 " + styles.cost}>
+      <div className={`pt-10 ${styles.order}`}>
+        <div className={`pr-10 ${styles.cost}`}>
           <span className="text text_type_digits-medium pr-3">{sum}</span>
           <div className={styles.icon}>
             <CurrencyIcon type="primary" />
           </div>
         </div>
         <Button
-          disabled={buttonState}
+          disabled={!statesData.burgerBun.type}
           htmlType="button"
           type="primary"
           size="large"
@@ -50,11 +42,11 @@ function BurgerConstructor({ statesData }) {
 
 BurgerConstructor.propTypes = {
   statesData: PropTypes.shape({
-    burgerCreation: PropTypes.array,
-    setBurgerCreation: PropTypes.func,
-    burgerBun: PropTypes.object,
-    setBurgerBun: PropTypes.func,
-  }),
+    burgerCreation: PropTypes.array.isRequired,
+    setBurgerCreation: PropTypes.func.isRequired,
+    burgerBun: PropTypes.object.isRequired,
+    setBurgerBun: PropTypes.func.isRequired,
+  }).isRequired,
 };
 
 export default BurgerConstructor;

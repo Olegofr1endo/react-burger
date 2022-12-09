@@ -3,23 +3,33 @@ import React, { useState } from "react";
 import styles from "./burger-ingredients-nav.module.css";
 
 function BurgerIngredientsNav() {
-  const [isActive, setIsActive] = useState(1);
+  const [activeButtonNumber, setActiveButtonNumber] = useState(1);
+  const [activeButtonBuns, activeButtonSauces, activeButtonMains] = [1, 2, 3];
 
   return (
     <nav>
-      <ul className={"text text_type_main-default mt-5 " + styles.menuNav}>
+      <ul className={`text text_type_main-default mt-5 ${styles.menuNav}`}>
         <li>
-          <Tab active={isActive === 1} onClick={() => setIsActive(1)}>
+          <Tab
+            active={activeButtonNumber === activeButtonBuns}
+            onClick={() => setActiveButtonNumber(1)}
+          >
             Булки
           </Tab>
         </li>
         <li>
-          <Tab active={isActive === 2} onClick={() => setIsActive(2)}>
+          <Tab
+            active={activeButtonNumber === activeButtonSauces}
+            onClick={() => setActiveButtonNumber(2)}
+          >
             Соусы
           </Tab>
         </li>
         <li>
-          <Tab active={isActive === 3} onClick={() => setIsActive(3)}>
+          <Tab
+            active={activeButtonNumber === activeButtonMains}
+            onClick={() => setActiveButtonNumber(3)}
+          >
             Начинки
           </Tab>
         </li>

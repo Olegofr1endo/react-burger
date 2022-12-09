@@ -8,11 +8,6 @@ import BurgerConstructor from "../burger-constructor/burger-constructor";
 function App() {
   const [burgerCreation, setBurgerCreation] = useState([]);
   const [burgerBun, setBurgerBun] = useState({ price: 0 });
-  const [isActive, setIsActive] = useState({
-    constructor: true,
-    orders: false,
-    profile: false,
-  });
 
   const statesData = useMemo(() => {
     return {
@@ -25,8 +20,8 @@ function App() {
 
   return (
     <div className="App">
-      <AppHeader isActive={isActive} setIsActive={setIsActive} />
-      <div className={"mb-10 " + styles.main}>
+      <AppHeader />
+      <div className={`mb-10 ${styles.main}`}>
         <BurgerIngridients data={data} statesData={statesData} />
         <BurgerConstructor statesData={statesData} />
       </div>

@@ -1,6 +1,7 @@
 import React from "react";
 import styles from "./scrollable-construct-container.module.css";
 import ConstructorElementWrapper from "../constructor-element-wrapper/constructor-element-wrapper";
+import PropTypes from "prop-types";
 import { v4 as uuid } from "uuid";
 
 function ScrollableConstructContainer({ statesData }) {
@@ -36,7 +37,7 @@ function ScrollableConstructContainer({ statesData }) {
         price={burgerBun.price}
         thumbnail={burgerBun.image}
       />
-      <div className={"pl-4 pr-2 " + styles.constructor}>
+      <div className={`pl-4 pr-2 ${styles.constructor}`}>
         {burgerElementsArr}
       </div>
       <ConstructorElementWrapper
@@ -50,5 +51,14 @@ function ScrollableConstructContainer({ statesData }) {
     </>
   );
 }
+
+ScrollableConstructContainer.propTypes = {
+  statesData: PropTypes.shape({
+    burgerCreation: PropTypes.array.isRequired,
+    setBurgerCreation: PropTypes.func.isRequired,
+    burgerBun: PropTypes.object.isRequired,
+    setBurgerBun: PropTypes.func.isRequired,
+  }).isRequired,
+};
 
 export default ScrollableConstructContainer;

@@ -1,5 +1,6 @@
 import React, { useMemo } from "react";
 import styles from "./header-button.module.css";
+import PropTypes from "prop-types";
 import {
   ListIcon,
   BurgerIcon,
@@ -23,11 +24,19 @@ function HeaderButton({ iconType, text, indents, isActive, onClick }) {
 
   const Icon = icons[iconType];
   return (
-    <div className={className} onClick={onClick}>
+    <a href="#" className={className} onClick={onClick}>
       {isActive ? <Icon type="primary" /> : <Icon type="secondary" />}
       <span className={`pl-2 text text_type_main-default`}>{text}</span>
-    </div>
+    </a>
   );
 }
+
+HeaderButton.propTypes = {
+  iconType: PropTypes.string.isRequired,
+  text: PropTypes.string,
+  indents: PropTypes.string,
+  isActive: PropTypes.bool,
+  onClick: PropTypes.func.isRequired,
+};
 
 export default HeaderButton;

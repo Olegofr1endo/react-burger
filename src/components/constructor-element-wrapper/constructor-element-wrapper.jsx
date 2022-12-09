@@ -4,6 +4,7 @@ import {
 } from "@ya.praktikum/react-developer-burger-ui-components";
 import styles from "./constructor-element-wrapper.module.css";
 import React from "react";
+import PropTypes from "prop-types";
 
 function ConstructorElementWrapper({
   indents,
@@ -16,9 +17,9 @@ function ConstructorElementWrapper({
   handleClose,
 }) {
   return (
-    <div className={indents + " " + styles.wrapperElement}>
+    <div className={`${indents} ${styles.wrapperElement}`}>
       {!isLocked && <DragIcon type="primary" />}
-      <div className={"pl-2 " + styles.constructorElement}>
+      <div className={`pl-2 ${styles.constructorElement}`}>
         <ConstructorElement
           type={type}
           isLocked={isLocked}
@@ -31,5 +32,16 @@ function ConstructorElementWrapper({
     </div>
   );
 }
+
+ConstructorElementWrapper.propTypes = {
+  indents: PropTypes.string,
+  type: PropTypes.string,
+  isLocked: PropTypes.bool,
+  text: PropTypes.string,
+  thumbnail: PropTypes.string,
+  price: PropTypes.number.isRequired,
+  index: PropTypes.number,
+  handleClose: PropTypes.func,
+};
 
 export default ConstructorElementWrapper;
