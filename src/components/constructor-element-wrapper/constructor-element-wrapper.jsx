@@ -12,6 +12,8 @@ function ConstructorElementWrapper({
   text,
   thumbnail,
   price,
+  index,
+  handleClose,
 }) {
   return (
     <div className={indents + " " + styles.wrapperElement}>
@@ -23,6 +25,7 @@ function ConstructorElementWrapper({
           text={text}
           thumbnail={thumbnail}
           price={price}
+          handleClose={() => handleClose(index)}
         />
       </div>
     </div>

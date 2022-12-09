@@ -1,8 +1,8 @@
 import React from "react";
 import styles from "./burger-ingredients-content.module.css";
-import BurgerIngredientsType from "../burger-ingredients-type/burger-ingredients-type";
+import SortedByType from "../sorted-by-type/sorted-by-type";
 
-function BurgerIngredientsContent({ data, addBurgerElement }) {
+function BurgerIngredientsContent({ data, statesData }) {
   const bunsData = data.filter((item) => {
     return item.type === "bun";
   });
@@ -13,25 +13,25 @@ function BurgerIngredientsContent({ data, addBurgerElement }) {
     return item.type === "sauce";
   });
 
+  function scrollHandler(e) {
+    console.log("кручу");
+  }
+
   return (
-    <div className={styles.content}>
-      <BurgerIngredientsType
+    <div className={styles.content} onScroll={scrollHandler}>
+      <SortedByType
+        statesData={statesData}
         indents="mt-10 mb-10"
         data={bunsData}
         header="Булки"
-        addBurgerElement={addBurgerElement}
       />
-      <BurgerIngredientsType
+      <SortedByType
+        statesData={statesData}
         indents="mb-10"
         data={saucesData}
         header="Соусы"
-        addBurgerElement={addBurgerElement}
       />
-      <BurgerIngredientsType
-        data={mainsData}
-        header="Начинки"
-        addBurgerElement={addBurgerElement}
-      />
+      <SortedByType statesData={statesData} data={mainsData} header="Начинки" />
     </div>
   );
 }

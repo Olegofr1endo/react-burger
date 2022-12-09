@@ -7,18 +7,26 @@ import BurgerConstructor from "../burger-constructor/burger-constructor";
 
 function App() {
   const [burgerCreation, setBurgerCreation] = useState([]);
+  const [burgerBun, setBurgerBun] = useState({ price: 0 });
+  const [isActive, setIsActive] = useState({
+    constructor: true,
+    orders: false,
+    profile: false,
+  });
 
-  function addBurgerElement(elementData) {
-    setBurgerCreation([...burgerCreation, elementData]);
-    console.log(burgerCreation);
-  }
+  const statesData = {
+    burgerCreation,
+    setBurgerCreation,
+    burgerBun,
+    setBurgerBun,
+  };
 
   return (
     <div className="App">
-      <AppHeader />
+      <AppHeader isActive={isActive} setIsActive={setIsActive} />
       <div className={"mb-10 " + styles.main}>
-        <BurgerIngridients addBurgerElement={addBurgerElement} data={data} />
-        <BurgerConstructor burgerCreation={burgerCreation} />
+        <BurgerIngridients data={data} statesData={statesData} />
+        <BurgerConstructor statesData={statesData} />
       </div>
     </div>
   );

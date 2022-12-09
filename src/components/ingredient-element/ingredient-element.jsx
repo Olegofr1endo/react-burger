@@ -1,8 +1,34 @@
-import { CurrencyIcon } from "@ya.praktikum/react-developer-burger-ui-components";
-import React from "react";
+import {
+  CurrencyIcon,
+  Counter,
+} from "@ya.praktikum/react-developer-burger-ui-components";
+import React, { useState } from "react";
 import styles from "./ingredient-element.module.css";
 
-function IngredientElement({ ingredient, addBurgerElement }) {
+function IngredientElement({ ingredient, statesData }) {
+  const { burgerCreation, setBurgerCreation, burgerBun, setBurgerBun } = {
+    ...statesData,
+  };
+
+  let counter = burgerCreation.reduce((sum, item) => {
+    if (item._id === ingredient._id) {
+      return (sum += 1);
+    }
+    return sum;
+  }, 0);
+
+  if (ingredient._id === burgerBun._id) {
+    counter++;
+  }
+
+  function addBurgerElement(elementData) {
+    if (elementData.type === "bun") {
+      setBurgerBun(elementData);
+    } else {
+      setBurgerCreation([...burgerCreation, elementData]);
+    }
+  }
+
   return (
     <article
       className={styles.element}
@@ -15,6 +41,9 @@ function IngredientElement({ ingredient, addBurgerElement }) {
       <span className={"text text_type_main-default " + styles.name}>
         {ingredient.name}
       </span>
+      <div className={styles.counter}>
+        {counter !== 0 && <Counter count={counter} size="default" />}
+      </div>
     </article>
   );
 }

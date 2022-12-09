@@ -2,4 +2,11 @@
     display: flex;
     align-items: center;
     min-height: 56px;
+    cursor: pointer;
+    color: #8585AD;
+    transition: color .3s linear;
+}
+
+.button_active{
+    color: #F2F2F3;
 }

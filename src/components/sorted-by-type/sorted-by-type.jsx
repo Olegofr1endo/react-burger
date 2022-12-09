@@ -1,13 +1,8 @@
 import React from "react";
 import IngredientElement from "../ingredient-element/ingredient-element";
-import styles from "./burger-ingredients-type.module.css";
+import styles from "./sorted-by-type.module.css";
 
-function BurgerIngredientsType({
-  header,
-  indents = "",
-  data,
-  addBurgerElement,
-}) {
+function SortedByType({ header, indents = "", data, statesData }) {
   return (
     <div className={indents}>
       <h1 className="text text_type_main-medium">{header}</h1>
@@ -15,7 +10,7 @@ function BurgerIngredientsType({
         {data.map((ingredient) => {
           return (
             <IngredientElement
-              addBurgerElement={addBurgerElement}
+              statesData={statesData}
               key={ingredient._id}
               ingredient={ingredient}
             />
@@ -26,4 +21,4 @@ function BurgerIngredientsType({
   );
 }
 
-export default BurgerIngredientsType;
+export default SortedByType;
