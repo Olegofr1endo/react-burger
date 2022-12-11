@@ -3,7 +3,6 @@ import {
   Counter,
 } from "@ya.praktikum/react-developer-burger-ui-components";
 import React, { useMemo } from "react";
-import PropTypes from "prop-types";
 import styles from "./ingredient-element.module.css";
 import { ingredientProps, statesDataProps } from "../../utils/propTypes";
 

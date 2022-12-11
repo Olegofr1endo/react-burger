@@ -1,6 +1,5 @@
 import React from "react";
 import styles from "./burger-ingridients.module.css";
-import PropTypes from "prop-types";
 import { statesDataProps, dataProps } from "../../utils/propTypes";
 import BurgerIngredientsNav from "../burger-ingredients-nav/burger-ingredients-nav";
 import BurgerIngredientsContent from "../burger-ingredients-content/burger-ingredients-content";

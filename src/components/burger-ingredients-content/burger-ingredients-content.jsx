@@ -1,7 +1,6 @@
 import React, { useMemo } from "react";
 import styles from "./burger-ingredients-content.module.css";
 import SortedByType from "../sorted-by-type/sorted-by-type";
-import PropTypes from "prop-types";
 import { statesDataProps, dataProps } from "../../utils/propTypes";
 
 function BurgerIngredientsContent({ data, statesData }) {

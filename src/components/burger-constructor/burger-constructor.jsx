@@ -1,14 +1,14 @@
 import React, { useMemo } from "react";
 import styles from "./burger-constructor.module.css";
-import PropTypes from "prop-types";
 import {
   Button,
   CurrencyIcon,
 } from "@ya.praktikum/react-developer-burger-ui-components";
 import { statesDataProps } from "../../utils/propTypes";
 import ScrollableConstructContainer from "../scrollable-construct-container/scrollable-construct-container";
+import PropTypes from "prop-types";
 
-function BurgerConstructor({ statesData }) {
+function BurgerConstructor({ statesData, handleOrderOpen }) {
   const sum = useMemo(() => {
     return statesData.burgerCreation.length > 0
       ? statesData.burgerCreation.reduce((sum, element) => {
@@ -33,6 +33,7 @@ function BurgerConstructor({ statesData }) {
           htmlType="button"
           type="primary"
           size="large"
+          onClick={handleOrderOpen}
         >
           Оформить заказ
         </Button>
@@ -43,6 +44,7 @@ function BurgerConstructor({ statesData }) {
 
 BurgerConstructor.propTypes = {
   statesData: statesDataProps,
+  handleOrderOpen: PropTypes.func.isRequired,
 };
 
 export default BurgerConstructor;

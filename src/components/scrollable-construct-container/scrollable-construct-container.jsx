@@ -1,7 +1,6 @@
 import React from "react";
 import styles from "./scrollable-construct-container.module.css";
 import ConstructorElementWrapper from "../constructor-element-wrapper/constructor-element-wrapper";
-import PropTypes from "prop-types";
 import { v4 as uuid } from "uuid";
 import { statesDataProps } from "../../utils/propTypes";
 
