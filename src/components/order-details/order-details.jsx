@@ -2,21 +2,12 @@ import {
   CheckMarkIcon,
   CloseIcon,
 } from "@ya.praktikum/react-developer-burger-ui-components";
-import React, { useEffect } from "react";
+import React from "react";
 import styles from "./order-details.module.css";
 
-function OrderDetails({ data, handleClose }) {
-  const close = handleClose(data.data, data.setData);
-
-  useEffect(() => {
-    setTimeout(() => {
-      document.addEventListener("click", close);
-    }, 0);
-    return () => document.removeEventListener("click", close);
-  });
-
+function OrderDetails() {
   return (
-    <div className={styles.popup} onClick={(e) => e.stopPropagation()}>
+    <>
       <h2 className={`text text_type_digits-large pt-30 ${styles.id}`}>123</h2>
       <span className={`text text_type_main-medium pt-8 ${styles.idCapt}`}>
         идентификатор заказа
@@ -34,10 +25,7 @@ function OrderDetails({ data, handleClose }) {
       >
         Дождитесь готовности на орбитальной станции
       </span>
-      <div className={styles.close} onClick={close}>
-        <CloseIcon type="primary" />
-      </div>
-    </div>
+    </>
   );
 }
 

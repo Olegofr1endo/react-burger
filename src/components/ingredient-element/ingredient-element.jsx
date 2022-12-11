@@ -5,6 +5,7 @@ import {
 import React, { useMemo } from "react";
 import styles from "./ingredient-element.module.css";
 import { ingredientProps, statesDataProps } from "../../utils/propTypes";
+import PropTypes from "prop-types";
 
 function IngredientElement({ ingredient, statesData, ingredientModalState }) {
   const { burgerCreation, setBurgerCreation, burgerBun, setBurgerBun } = {
@@ -41,7 +42,7 @@ function IngredientElement({ ingredient, statesData, ingredientModalState }) {
   return (
     <article
       className={styles.element}
-      onClick={openModal} // () => addBurgerElement(ingredient)
+      onClick={openModal} // () => addBurgerElement(ingredient) openModal
     >
       <img src={ingredient.image} className="pb-2"></img>
       <div className={`pb-2 text text_type_digits-default ${styles.price}`}>
@@ -60,6 +61,9 @@ function IngredientElement({ ingredient, statesData, ingredientModalState }) {
 IngredientElement.propTypes = {
   ingredient: ingredientProps,
   statesData: statesDataProps,
+  ingredientModalState: PropTypes.shape({
+    setIngredientModal: PropTypes.func.isRequired,
+  }),
 };
 
 export default IngredientElement;

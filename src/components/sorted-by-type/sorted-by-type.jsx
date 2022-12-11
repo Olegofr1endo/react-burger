@@ -3,6 +3,7 @@ import IngredientElement from "../ingredient-element/ingredient-element";
 import styles from "./sorted-by-type.module.css";
 import PropTypes from "prop-types";
 import { dataProps, statesDataProps } from "../../utils/propTypes";
+import { ingredientModalStateProps } from "../../utils/propTypes";
 
 function SortedByType({
   header,
@@ -35,6 +36,7 @@ SortedByType.propTypes = {
   indents: PropTypes.string,
   data: dataProps,
   statesData: statesDataProps,
+  ingredientModalState: ingredientModalStateProps,
 };
 
 export default SortedByType;

@@ -1,21 +1,39 @@
-import React from "react";
-import styles from "./poup.module.css";
+import React, { useEffect } from "react";
+import styles from "./popup.module.css";
+import { CloseIcon } from "@ya.praktikum/react-developer-burger-ui-components";
 
-export default function madePopup(Element) {
-  return function ({ data, handleClose }) {
-    const close = handleClose(data.data, data.setData);
+const madePopup = (Element) => {
+  return (data) => () => {
+    function closeModal() {
+      data.setData({ ...data.data, isOpened: false });
+    }
+
+    function escCloseHandler(e) {
+      if (e.key === "Escape") {
+        closeModal();
+      }
+    }
 
     useEffect(() => {
       setTimeout(() => {
-        document.addEventListener("click", close);
+        document.addEventListener("click", closeModal);
+        document.addEventListener("keydown", escCloseHandler);
       }, 0);
-      return () => document.removeEventListener("click", close);
+      return () => {
+        document.removeEventListener("click", closeModal);
+        document.removeEventListener("keydown", escCloseHandler);
+      };
     });
 
     return (
       <div className={styles.popup} onClick={(e) => e.stopPropagation()}>
         <Element data={data} />
+        <div className={styles.close} onClick={closeModal}>
+          <CloseIcon type="primary" />
+        </div>
       </div>
     );
   };
-}
+};
+
+export default madePopup;

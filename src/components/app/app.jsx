@@ -32,7 +32,6 @@ function App() {
   };
 
   function openOrderPopup() {
-    console.log("open");
     setOrderModal({ ...orderModal, isOpened: true });
   }
 
@@ -43,7 +42,6 @@ function App() {
       );
       const data = await res.json();
       setData(data.data);
-      console.log(data.data);
     }
     getData();
   }, []);

@@ -1,21 +1,14 @@
-import React, { useEffect } from "react";
+import React from "react";
 import styles from "./ingredient-details.module.css";
 import { CloseIcon } from "@ya.praktikum/react-developer-burger-ui-components";
 import PropTypes from "prop-types";
+import { ingredientProps } from "../../utils/propTypes";
 
-function IngredientDetails({ data, handleClose }) {
+function IngredientDetails({ data }) {
   const ingredientDetails = data.data;
-  const close = handleClose(data.data, data.setData);
-
-  useEffect(() => {
-    setTimeout(() => {
-      document.addEventListener("click", close);
-    }, 0);
-    return () => document.removeEventListener("click", close);
-  });
 
   return (
-    <div className={styles.popup} onClick={(e) => e.stopPropagation()}>
+    <>
       <div className={`pl-10 pt-10 ${styles.detailsWrapper}`}>
         <h2 className="text text_type_main-large">Детали ингредиента</h2>
       </div>
@@ -43,11 +36,16 @@ function IngredientDetails({ data, handleClose }) {
           </tr>
         </tbody>
       </table>
-      <div className={styles.close} onClick={close}>
-        <CloseIcon type="primary" />
-      </div>
-    </div>
+    </>
   );
 }
+
+IngredientDetails.propTypes = {
+  data: PropTypes.shape({
+    data: PropTypes.shape({
+      ingredientProps,
+    }),
+  }),
+};
 
 export default IngredientDetails;
