@@ -4,7 +4,13 @@ import styles from "./sorted-by-type.module.css";
 import PropTypes from "prop-types";
 import { dataProps, statesDataProps } from "../../utils/propTypes";
 
-function SortedByType({ header, indents = "", data, statesData }) {
+function SortedByType({
+  header,
+  indents = "",
+  data,
+  statesData,
+  ingredientModalState,
+}) {
   return (
     <div className={indents}>
       <h1 className="text text_type_main-medium">{header}</h1>
@@ -15,6 +21,7 @@ function SortedByType({ header, indents = "", data, statesData }) {
               statesData={statesData}
               key={ingredient._id}
               ingredient={ingredient}
+              ingredientModalState={ingredientModalState}
             />
           );
         })}

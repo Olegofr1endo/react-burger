@@ -20,10 +20,19 @@ function Modal({ data }) {
         <div className={styles.modal}>
           <ModalOverlay />
           {data.orderModal.isOpened && (
-            <OrderDetails data={data} handleClose={closeModal} />
+            <OrderDetails
+              data={{ data: data.orderModal, setData: data.setOrderModal }}
+              handleClose={closeModal}
+            />
           )}
           {data.ingredientModal.isOpened && (
-            <IngredientDetails data={data} handleClose={closeModal} />
+            <IngredientDetails
+              data={{
+                data: data.ingredientModal,
+                setData: data.setIngredientModal,
+              }}
+              handleClose={closeModal}
+            />
           )}
         </div>
       )}

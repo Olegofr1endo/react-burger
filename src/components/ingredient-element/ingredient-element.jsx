@@ -6,7 +6,7 @@ import React, { useMemo } from "react";
 import styles from "./ingredient-element.module.css";
 import { ingredientProps, statesDataProps } from "../../utils/propTypes";
 
-function IngredientElement({ ingredient, statesData }) {
+function IngredientElement({ ingredient, statesData, ingredientModalState }) {
   const { burgerCreation, setBurgerCreation, burgerBun, setBurgerBun } = {
     ...statesData,
   };
@@ -31,10 +31,17 @@ function IngredientElement({ ingredient, statesData }) {
     }
   }
 
+  function openModal() {
+    ingredientModalState.setIngredientModal({
+      data: ingredient,
+      isOpened: true,
+    });
+  }
+
   return (
     <article
       className={styles.element}
-      onClick={() => addBurgerElement(ingredient)}
+      onClick={openModal} // () => addBurgerElement(ingredient)
     >
       <img src={ingredient.image} className="pb-2"></img>
       <div className={`pb-2 text text_type_digits-default ${styles.price}`}>

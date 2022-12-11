@@ -1,9 +1,13 @@
 import React, { useMemo } from "react";
 import styles from "./burger-ingredients-content.module.css";
 import SortedByType from "../sorted-by-type/sorted-by-type";
-import { statesDataProps, dataProps } from "../../utils/propTypes";
+import {
+  statesDataProps,
+  dataProps,
+  ingredientModalStateProps,
+} from "../../utils/propTypes";
 
-function BurgerIngredientsContent({ data, statesData }) {
+function BurgerIngredientsContent({ data, statesData, ingredientModalState }) {
   const [bun, main, sauce] = ["bun", "main", "sauce"];
   const bunsData = useMemo(
     () =>
@@ -34,14 +38,21 @@ function BurgerIngredientsContent({ data, statesData }) {
         indents="mt-10 mb-10"
         data={bunsData}
         header="Булки"
+        ingredientModalState={ingredientModalState}
       />
       <SortedByType
         statesData={statesData}
         indents="mb-10"
         data={saucesData}
         header="Соусы"
+        ingredientModalState={ingredientModalState}
       />
-      <SortedByType statesData={statesData} data={mainsData} header="Начинки" />
+      <SortedByType
+        statesData={statesData}
+        data={mainsData}
+        header="Начинки"
+        ingredientModalState={ingredientModalState}
+      />
     </div>
   );
 }
@@ -49,6 +60,7 @@ function BurgerIngredientsContent({ data, statesData }) {
 BurgerIngredientsContent.propTypes = {
   statesData: statesDataProps,
   data: dataProps,
+  ingredientModalState: ingredientModalStateProps,
 };
 
 export default BurgerIngredientsContent;

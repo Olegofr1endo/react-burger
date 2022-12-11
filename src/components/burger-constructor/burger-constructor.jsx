@@ -29,7 +29,7 @@ function BurgerConstructor({ statesData, handleOrderOpen }) {
           </div>
         </div>
         <Button
-          disabled={!statesData.burgerBun.type}
+          disabled={false} //!statesData.burgerBun.type
           htmlType="button"
           type="primary"
           size="large"

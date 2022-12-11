@@ -20,8 +20,13 @@ export const ingredientProps = PropTypes.shape({
   image_mobile: PropTypes.string.isRequired,
   image_large: PropTypes.string.isRequired,
   __v: PropTypes.number.isRequired,
-}).isRequired;
+});
+
+export const ingredientModalStateProps = PropTypes.shape({
+  isOpened: PropTypes.bool.isRequired,
+  data: ingredientProps,
+});
 
 export const dataProps = PropTypes.arrayOf(
-  PropTypes.shape(ingredientProps)
+  PropTypes.shape(ingredientProps.isRequired)
 ).isRequired;

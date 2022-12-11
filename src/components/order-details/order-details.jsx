@@ -6,13 +6,13 @@ import React, { useEffect } from "react";
 import styles from "./order-details.module.css";
 
 function OrderDetails({ data, handleClose }) {
-  const close = handleClose(data.orderModal, data.setOrderModal);
+  const close = handleClose(data.data, data.setData);
 
   useEffect(() => {
     setTimeout(() => {
-      document.addEventListener("mousedown", close);
+      document.addEventListener("click", close);
     }, 0);
-    return () => document.removeEventListener("mousedown", close);
+    return () => document.removeEventListener("click", close);
   });
 
   return (
@@ -29,7 +29,9 @@ function OrderDetails({ data, handleClose }) {
       <span className={`mt-15 text text_type_main-default`}>
         Ваш заказ начали готовить
       </span>
-      <span className={`mt-2 text text_type_main-default ${styles.darker}`}>
+      <span
+        className={`mt-2 mb-30 text text_type_main-default ${styles.darker}`}
+      >
         Дождитесь готовности на орбитальной станции
       </span>
       <div className={styles.close} onClick={close}>
