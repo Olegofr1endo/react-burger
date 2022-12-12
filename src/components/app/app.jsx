@@ -37,9 +37,7 @@ function App() {
   }
 
   useEffect(() => {
-    (async function () {
-      setData(await Api.getData());
-    })();
+    Api.getData(setData);
   }, []);
 
   return (

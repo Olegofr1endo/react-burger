@@ -1,8 +1,8 @@
 import React, { useEffect } from "react";
-import styles from "./popup.module.css";
+import styles from "./create-popup.module.css";
 import { CloseIcon } from "@ya.praktikum/react-developer-burger-ui-components";
 
-const madePopup = (Element) => {
+const createPopup = (Element) => {
   return (data) => () => {
     function closeModal() {
       data.setData({ ...data.data, isOpened: false });
@@ -36,4 +36,4 @@ const madePopup = (Element) => {
   };
 };
 
-export default madePopup;
+export default createPopup;

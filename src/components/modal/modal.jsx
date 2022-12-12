@@ -3,16 +3,16 @@ import styles from "./modal.module.css";
 import ModalOverlay from "../modal-overlay/modal-overlay";
 import OrderDetails from "../order-details/order-details";
 import IngredientDetails from "../ingredient-details/ingredient-details";
-import madePopup from "../../HOCs/popup/popup";
+import createPopup from "../../HOCs/popup/create-popup";
 import PropTypes from "prop-types";
 import { ingredientPropsNoneRequired } from "../../utils/propTypes";
 
 function Modal({ data }) {
-  const OrderDetailsElement = madePopup(OrderDetails)({
+  const OrderDetailsElement = createPopup(OrderDetails)({
     data: data.orderModal,
     setData: data.setOrderModal,
   });
-  const IngredientDetailsElement = madePopup(IngredientDetails)({
+  const IngredientDetailsElement = createPopup(IngredientDetails)({
     data: data.ingredientModal,
     setData: data.setIngredientModal,
   });
