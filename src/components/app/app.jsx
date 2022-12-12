@@ -5,6 +5,7 @@ import styles from "./app.module.css";
 import BurgerConstructor from "../burger-constructor/burger-constructor";
 import Modal from "../modal/modal";
 import { createPortal } from "react-dom";
+import Api from "../../API";
 
 const modalRoot = document.getElementById("modal-root");
 
@@ -36,14 +37,9 @@ function App() {
   }
 
   useEffect(() => {
-    async function getData() {
-      const res = await fetch(
-        "https://norma.nomoreparties.space/api/ingredients"
-      );
-      const data = await res.json();
-      setData(data.data);
-    }
-    getData();
+    (async function () {
+      setData(await Api.getData());
+    })();
   }, []);
 
   return (
