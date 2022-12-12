@@ -1,7 +1,4 @@
-import {
-  CheckMarkIcon,
-  CloseIcon,
-} from "@ya.praktikum/react-developer-burger-ui-components";
+import { CheckMarkIcon } from "@ya.praktikum/react-developer-burger-ui-components";
 import React from "react";
 import styles from "./order-details.module.css";
 

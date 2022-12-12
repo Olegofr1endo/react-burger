@@ -1,44 +1,46 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styles from "./modal.module.css";
 import ModalOverlay from "../modal-overlay/modal-overlay";
-import OrderDetails from "../order-details/order-details";
-import IngredientDetails from "../ingredient-details/ingredient-details";
-import createPopup from "../../HOCs/popup/create-popup";
+import { CloseIcon } from "@ya.praktikum/react-developer-burger-ui-components";
 import PropTypes from "prop-types";
-import { ingredientPropsNoneRequired } from "../../utils/propTypes";
+import { createPortal } from "react-dom";
 
-function Modal({ data }) {
-  const OrderDetailsElement = createPopup(OrderDetails)({
-    data: data.orderModal,
-    setData: data.setOrderModal,
-  });
-  const IngredientDetailsElement = createPopup(IngredientDetails)({
-    data: data.ingredientModal,
-    setData: data.setIngredientModal,
-  });
+function Modal({ children, closeModal, isModalOpened }) {
+  function escCloseHandler(e) {
+    if (e.key === "Escape") {
+      closeModal();
+    }
+  }
 
-  const isOvelayOpened =
-    data.ingredientModal.isOpened || data.orderModal.isOpened;
+  useEffect(() => {
+    setTimeout(() => {
+      document.addEventListener("click", closeModal);
+      document.addEventListener("keydown", escCloseHandler);
+    }, 0);
+    return () => {
+      document.removeEventListener("click", closeModal);
+      document.removeEventListener("keydown", escCloseHandler);
+    };
+  }, [isModalOpened]);
+
   return (
-    <>
-      {isOvelayOpened && (
-        <div className={styles.modal}>
-          <ModalOverlay />
-          {data.orderModal.isOpened && <OrderDetailsElement />}
-          {data.ingredientModal.isOpened && <IngredientDetailsElement />}
+    isModalOpened && (
+      <div className={styles.modal}>
+        <ModalOverlay />
+        <div className={styles.popup} onClick={(e) => e.stopPropagation()}>
+          {children}
+          <div className={styles.close} onClick={closeModal}>
+            <CloseIcon type="primary" />
+          </div>
         </div>
-      )}
-    </>
+      </div>
+    )
   );
 }
 
 Modal.propTypes = {
-  data: PropTypes.shape({
-    orderModal: PropTypes.object,
-    setOrderModal: PropTypes.func.isRequired,
-    ingredientModal: ingredientPropsNoneRequired,
-    setIngredientModal: PropTypes.func,
-  }),
+  isModalOpened: PropTypes.bool.isRequired,
+  closeModal: PropTypes.func.isRequired,
 };
 
 export default Modal;

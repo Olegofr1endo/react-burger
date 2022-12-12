@@ -6,6 +6,8 @@ import BurgerConstructor from "../burger-constructor/burger-constructor";
 import Modal from "../modal/modal";
 import { createPortal } from "react-dom";
 import Api from "../../API";
+import IngredientDetails from "../ingredient-details/ingredient-details";
+import OrderDetails from "../order-details/order-details";
 
 const modalRoot = document.getElementById("modal-root");
 
@@ -31,9 +33,15 @@ function App() {
     ingredientModal,
     setIngredientModal,
   };
+  const isModalOpened = ingredientModal.isOpened || orderModal.isOpened;
 
   function openOrderPopup() {
     setOrderModal({ ...orderModal, isOpened: true });
+  }
+
+  function closeModal() {
+    setOrderModal({ ...orderModal, isOpened: false });
+    setIngredientModal({ ...ingredientModal, isOpened: false });
   }
 
   useEffect(() => {
@@ -57,14 +65,12 @@ function App() {
         </div>
       </div>
       {createPortal(
-        <Modal
-          data={{
-            ingredientModal,
-            setIngredientModal,
-            orderModal,
-            setOrderModal,
-          }}
-        />,
+        <Modal closeModal={closeModal} isModalOpened={isModalOpened}>
+          {ingredientModal.isOpened && (
+            <IngredientDetails data={{ ingredientModal }} />
+          )}
+          {orderModal.isOpened && <OrderDetails data={{ orderModal }} />}
+        </Modal>,
         modalRoot
       )}
     </>

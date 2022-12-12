@@ -1,11 +1,10 @@
 import React from "react";
 import styles from "./ingredient-details.module.css";
-import { CloseIcon } from "@ya.praktikum/react-developer-burger-ui-components";
 import PropTypes from "prop-types";
 import { ingredientProps } from "../../utils/propTypes";
 
 function IngredientDetails({ data }) {
-  const ingredientDetails = data.data;
+  const ingredientDetails = data.ingredientModal;
 
   return (
     <>
@@ -42,8 +41,9 @@ function IngredientDetails({ data }) {
 
 IngredientDetails.propTypes = {
   data: PropTypes.shape({
-    data: PropTypes.shape({
-      ingredientProps,
+    ingredientModal: PropTypes.shape({
+      isOpened: PropTypes.bool.isRequired,
+      data: ingredientProps,
     }),
   }),
 };
