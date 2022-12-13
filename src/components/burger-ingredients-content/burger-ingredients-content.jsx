@@ -1,13 +1,10 @@
 import React, { useMemo } from "react";
 import styles from "./burger-ingredients-content.module.css";
 import SortedByType from "../sorted-by-type/sorted-by-type";
-import {
-  statesDataProps,
-  dataProps,
-  ingredientModalStateProps,
-} from "../../utils/propTypes";
+import { statesDataProps, dataProps } from "../../utils/propTypes";
+import PropTypes from "prop-types";
 
-function BurgerIngredientsContent({ data, statesData, ingredientModalState }) {
+function BurgerIngredientsContent({ data, statesData, setIngredientModal }) {
   const [bun, main, sauce] = ["bun", "main", "sauce"];
   const bunsData = useMemo(
     () =>
@@ -38,20 +35,20 @@ function BurgerIngredientsContent({ data, statesData, ingredientModalState }) {
         indents="mt-10 mb-10"
         data={bunsData}
         header="Булки"
-        ingredientModalState={ingredientModalState}
+        setIngredientModal={setIngredientModal}
       />
       <SortedByType
         statesData={statesData}
         indents="mb-10"
         data={saucesData}
         header="Соусы"
-        ingredientModalState={ingredientModalState}
+        setIngredientModal={setIngredientModal}
       />
       <SortedByType
         statesData={statesData}
         data={mainsData}
         header="Начинки"
-        ingredientModalState={ingredientModalState}
+        setIngredientModal={setIngredientModal}
       />
     </div>
   );
@@ -60,7 +57,7 @@ function BurgerIngredientsContent({ data, statesData, ingredientModalState }) {
 BurgerIngredientsContent.propTypes = {
   statesData: statesDataProps,
   data: dataProps,
-  ingredientModalState: ingredientModalStateProps,
+  setIngredientModal: PropTypes.func.isRequired,
 };
 
 export default BurgerIngredientsContent;

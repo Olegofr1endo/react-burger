@@ -3,14 +3,13 @@ import IngredientElement from "../ingredient-element/ingredient-element";
 import styles from "./sorted-by-type.module.css";
 import PropTypes from "prop-types";
 import { dataProps, statesDataProps } from "../../utils/propTypes";
-import { ingredientModalStateProps } from "../../utils/propTypes";
 
 function SortedByType({
   header,
   indents = "",
   data,
   statesData,
-  ingredientModalState,
+  setIngredientModal,
 }) {
   return (
     <div className={indents}>
@@ -22,7 +21,7 @@ function SortedByType({
               statesData={statesData}
               key={ingredient._id}
               ingredient={ingredient}
-              ingredientModalState={ingredientModalState}
+              setIngredientModal={setIngredientModal}
             />
           );
         })}
@@ -36,7 +35,7 @@ SortedByType.propTypes = {
   indents: PropTypes.string,
   data: dataProps,
   statesData: statesDataProps,
-  ingredientModalState: ingredientModalStateProps,
+  setIngredientModal: PropTypes.func.isRequired,
 };
 
 export default SortedByType;

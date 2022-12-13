@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useMemo } from "react";
 import styles from "./scrollable-construct-container.module.css";
 import ConstructorElementWrapper from "../constructor-element-wrapper/constructor-element-wrapper";
 import { v4 as uuid } from "uuid";
@@ -14,18 +14,20 @@ function ScrollableConstructContainer({ statesData }) {
     ]);
   }
 
-  const burgerElementsArr = burgerCreation.map((burgerElement, index) => {
-    return (
-      <ConstructorElementWrapper
-        key={uuid()}
-        text={burgerElement.name}
-        price={burgerElement.price}
-        thumbnail={burgerElement.image}
-        index={index}
-        handleClose={deleteHandler}
-      />
-    );
-  });
+  const burgerElementsArr = useMemo(() => {
+    return burgerCreation.map((burgerElement, index) => {
+      return (
+        <ConstructorElementWrapper
+          key={uuid()}
+          text={burgerElement.name}
+          price={burgerElement.price}
+          thumbnail={burgerElement.image}
+          index={index}
+          handleClose={deleteHandler}
+        />
+      );
+    });
+  }, [burgerCreation]);
 
   return (
     <>

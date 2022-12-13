@@ -1,4 +1,4 @@
-import React, { useMemo } from "react";
+import React, { useMemo, useState } from "react";
 import styles from "./burger-constructor.module.css";
 import {
   Button,
@@ -7,8 +7,12 @@ import {
 import { statesDataProps } from "../../utils/propTypes";
 import ScrollableConstructContainer from "../scrollable-construct-container/scrollable-construct-container";
 import PropTypes from "prop-types";
+import Modal from "../modal/modal";
+import OrderDetails from "../order-details/order-details";
 
-function BurgerConstructor({ statesData, handleOrderOpen }) {
+function BurgerConstructor({ statesData }) {
+  const [orderModal, setOrderModal] = useState(null);
+
   const sum = useMemo(() => {
     return statesData.burgerCreation.length > 0
       ? statesData.burgerCreation.reduce((sum, element) => {
@@ -17,6 +21,10 @@ function BurgerConstructor({ statesData, handleOrderOpen }) {
           statesData.burgerBun.price * 2
       : statesData.burgerBun.price * 2;
   }, [statesData.burgerCreation, statesData.burgerBun]);
+
+  function openOrderPopup() {
+    setOrderModal(true);
+  }
 
   return (
     <section className={`pt-25 ${styles.content}`}>
@@ -33,18 +41,26 @@ function BurgerConstructor({ statesData, handleOrderOpen }) {
           htmlType="button"
           type="primary"
           size="large"
-          onClick={handleOrderOpen}
+          onClick={openOrderPopup}
         >
           Оформить заказ
         </Button>
       </div>
+      {orderModal && (
+        <Modal
+          closeModal={() => {
+            setOrderModal(false);
+          }}
+        >
+          <OrderDetails />
+        </Modal>
+      )}
     </section>
   );
 }
 
 BurgerConstructor.propTypes = {
   statesData: statesDataProps,
-  handleOrderOpen: PropTypes.func.isRequired,
 };
 
 export default BurgerConstructor;

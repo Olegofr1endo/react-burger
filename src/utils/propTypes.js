@@ -20,30 +20,7 @@ export const ingredientProps = PropTypes.shape({
   image_mobile: PropTypes.string.isRequired,
   image_large: PropTypes.string.isRequired,
   __v: PropTypes.number.isRequired,
-});
-
-export const ingredientPropsNoneRequired = PropTypes.shape({
-  _id: PropTypes.string,
-  name: PropTypes.string,
-  type: PropTypes.string,
-  proteins: PropTypes.number,
-  fat: PropTypes.number,
-  carbohydrates: PropTypes.number,
-  calories: PropTypes.number,
-  price: PropTypes.number,
-  image: PropTypes.string,
-  image_mobile: PropTypes.string,
-  image_large: PropTypes.string,
-  __v: PropTypes.number,
-});
-
-export const ingredientModalStateProps = PropTypes.shape({
-  ingredientModal: PropTypes.shape({
-    isOpened: PropTypes.bool.isRequired,
-    data: ingredientPropsNoneRequired,
-  }),
-  setIngredientModal: PropTypes.func.isRequired,
-});
+}).isRequired;
 
 export const dataProps = PropTypes.arrayOf(
   PropTypes.shape(ingredientProps.isRequired)

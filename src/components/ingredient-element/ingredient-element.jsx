@@ -7,7 +7,7 @@ import styles from "./ingredient-element.module.css";
 import { ingredientProps, statesDataProps } from "../../utils/propTypes";
 import PropTypes from "prop-types";
 
-function IngredientElement({ ingredient, statesData, ingredientModalState }) {
+function IngredientElement({ ingredient, statesData, setIngredientModal }) {
   const { burgerCreation, setBurgerCreation, burgerBun, setBurgerBun } = {
     ...statesData,
   };
@@ -33,10 +33,7 @@ function IngredientElement({ ingredient, statesData, ingredientModalState }) {
   }
 
   function openModal() {
-    ingredientModalState.setIngredientModal({
-      data: ingredient,
-      isOpened: true,
-    });
+    setIngredientModal(ingredient);
   }
 
   return (
@@ -61,9 +58,7 @@ function IngredientElement({ ingredient, statesData, ingredientModalState }) {
 IngredientElement.propTypes = {
   ingredient: ingredientProps,
   statesData: statesDataProps,
-  ingredientModalState: PropTypes.shape({
-    setIngredientModal: PropTypes.func.isRequired,
-  }),
+  setIngredientModal: PropTypes.func.isRequired,
 };
 
 export default IngredientElement;
