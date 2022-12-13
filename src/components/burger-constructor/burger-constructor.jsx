@@ -6,7 +6,6 @@ import {
 } from "@ya.praktikum/react-developer-burger-ui-components";
 import { statesDataProps } from "../../utils/propTypes";
 import ScrollableConstructContainer from "../scrollable-construct-container/scrollable-construct-container";
-import PropTypes from "prop-types";
 import Modal from "../modal/modal";
 import OrderDetails from "../order-details/order-details";
 

@@ -23,5 +23,5 @@ export const ingredientProps = PropTypes.shape({
 }).isRequired;
 
 export const dataProps = PropTypes.arrayOf(
-  PropTypes.shape(ingredientProps.isRequired)
+  PropTypes.shape(ingredientProps.isRequired).isRequired
 ).isRequired;

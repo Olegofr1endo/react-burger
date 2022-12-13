@@ -4,7 +4,7 @@ import styles from "./burger-ingredients-nav.module.css";
 
 function BurgerIngredientsNav() {
   const [activeButtonNumber, setActiveButtonNumber] = useState(1);
-  const [activeButtonBuns, activeButtonSauces, activeButtonMains] = [1, 2, 3];
+  const [activeButtonBuns, activeButtonSauces, activeButtonMains] = [1, 2, 3]; // Здесь я и выношу значения в константы, не понял замечания
 
   return (
     <nav>

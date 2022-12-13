@@ -36,15 +36,13 @@ function App() {
   }, []);
 
   return (
-    <>
-      <div className="App">
-        <AppHeader />
-        <div className={`mb-10 ${styles.main}`}>
-          <BurgerIngredients data={data} statesData={statesData} />
-          <BurgerConstructor statesData={statesData} />
-        </div>
+    <div className="App">
+      <AppHeader />
+      <div className={`mb-10 ${styles.main}`}>
+        <BurgerIngredients data={data} statesData={statesData} />
+        <BurgerConstructor statesData={statesData} />
       </div>
-    </>
+    </div>
   );
 }
 

@@ -29,7 +29,7 @@ function HeaderButton({ iconType, text, indents, isActive, onClick }) {
 
 HeaderButton.propTypes = {
   iconType: PropTypes.string.isRequired,
-  text: PropTypes.string,
+  text: PropTypes.string.isRequired,
   indents: PropTypes.string,
   isActive: PropTypes.bool,
   onClick: PropTypes.func.isRequired,
